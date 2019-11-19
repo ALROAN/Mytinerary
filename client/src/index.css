@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.appContainer {
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.views {
+  height: 90vh;
+  width: 100vw;
+}
+.myLogo {
+  height: 20vh;
+  width: 80vw;
+}
+
+.circledRight {
+  width: 30vw;
+  height: 30hw;
+}
+
+.homeIcon {
+  width: 30vw;
+  height: 30hw;
+}
+
+.navbar {
+  flex-wrap: nowrap !important;
+  padding-top: 1vh;
+}
+
+.buttons {
+  padding: 0 !important;
+}
+
+.footer {
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+}
