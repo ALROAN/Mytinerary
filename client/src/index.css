@@ -16,11 +16,13 @@ code {
   height: 100vh;
   width: 100vw;
   text-align: center;
+  /* background-image: linear-gradient(-90deg, cornflowerblue, indigo); */
 }
 
 .views {
   height: 90vh;
   width: 100vw;
+  overflow: scroll;
 }
 .myLogo {
   height: 20vh;
@@ -44,10 +46,46 @@ code {
 
 .buttons {
   padding: 0 !important;
+  
 }
 
 .footer {
+  background-color: #333;
+  overflow: hidden;
   position: fixed;
-  width: 100vw;
   bottom: 0;
+  width: 100vw;
 }
+
+.searchBarCitiesDiv {
+  margin-bottom: 20px !important;
+
+}
+
+
+.backButton {
+	background:linear-gradient(to bottom, #bcd1cb 5%, #969e9e 100%);
+	background-color:#bcd1cb;
+	border-radius:27px;
+	border:1px solid #9ea6a3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:10px 20px;
+	text-decoration:none;
+  text-shadow:0px 2px 5px #9fa8a7;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.backButton:hover {
+	background:linear-gradient(to bottom, #969e9e 5%, #bcd1cb 100%);
+	background-color:#969e9e;
+}
+.backButton:active {
+	position:relative;
+	top:1px;
+}
+

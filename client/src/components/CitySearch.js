@@ -1,69 +1,84 @@
-import React from "react";
-import TextField from "@material-ui/core/TextField";
+import React, { useState, useRef} from "react";
 import { Link } from "react-router-dom";
-// import Itinerary from "../views/Itinerary";
-// import { makeStyles } from "@material-ui/core/styles";
+
+//Material-ui
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-export default class CitySearch extends React.Component {
-  state = {
-    allCities: [],
-    citiesFound: []
-  };
+const useStyles = makeStyles({
+  cityButton: {
+  marginBottom: "10px !important",
+  width: "95vw",
+  height: "30vh",
+	border:"3px solid #942911",
+	display:"inline-block",
+	cursor:"pointer",
+  color:"white",
+  fontWeight:"bold",
+	fontFamily:"Georgia",
+	fontSize:"18px",
+	padding:"32px 76px",
+	textDecoration:"none",
+	textShadow:"0px 0px 60px brown",
+  }
+});
 
-  filterList = e => {
-    let citiesFound = this.state.allCities;
+
+const CitySearch = ({content}) => {
+  const classes = useStyles();
+  const buttonEl = useRef(null)
+
+
+
+  const[allCities,setAllCities] = useState(content)
+  const[citiesFound,setCitiesFound] = useState(content)
+    
+  const filterList = (e) => {
+      let citiesFound = setAllCities(citiesFound);
     citiesFound = citiesFound.filter(city => {
+      
       return (
         city.city.toLowerCase().startsWith(e.target.value.toLowerCase()) ||
         e.target.value === ""
       );
     });
-    this.setState({ citiesFound: citiesFound });
+    setCitiesFound(citiesFound)
   };
-
-  componentDidMount = () => {
-    this.setState({
-      allCities: this.props.content,
-      citiesFound: this.props.content
-    });
-  };
-
-  render() {
     return (
       <div>
-        <div>
+        <div className="searchBarCitiesDiv">
           <TextField
+            className="searchBarCities"
             id="standard-search"
-            label="Search your City/Country"
+            label="Search your City"
             type="search"
             margin="normal"
-            placeholder="Search your City"
-            onChange={this.filterList}
-          />
+            onChange={filterList}/>
         </div>
-        <div>
-          {this.state.citiesFound.map(function (city) {
+        <div  >
+          {citiesFound.map(function (city) {
             return (
-              <div key={city._id}>
-                <div>
-                  <div className="city-button" key={city._id}>
-                    <Button
+              
+              <Button
+              style = { {"backgroundImage": "url("+city.image+")"}}
+                      key={city._id}
+                      ref={buttonEl}
+                      className={classes.cityButton}
+                      color="primary"
                       component={Link}
-                      variant="outlined"
-                      size="large"
-                      color="inherit"
-                      to={`/itinerary/${city._id}`}
-                    >
-                      {city.city}
+                      to={`/itinerary/${city._id}`}>
+                        {city.city} // {city.country}
                     </Button>
-                  </div>{" "}
-                </div>
-              </div>
-            );
-          })}
+
+
+              
+                       
+            );})}
         </div>
       </div>
     );
   }
-}
+
+
+export default CitySearch

@@ -6,6 +6,9 @@ const CitySchema = new Schema({
   },
   country: {
     type: String
+  },
+  image: {
+    type: String
   }
 });
 module.exports = model("cities", CitySchema);

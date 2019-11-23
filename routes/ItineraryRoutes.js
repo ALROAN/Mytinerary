@@ -7,6 +7,7 @@ const {
   putItinerary,
   deleteItinerary
 } = require("../controllers/ItineraryCtrls");
+const withAuth = require('../middleware/middleware');
 
 router.route("/").get(getItineraries);
 router.route("/:cityId").post(postItinerary);

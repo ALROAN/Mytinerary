@@ -1,119 +1,85 @@
-import React from "react";
-// import { GoogleLogin } from "react-google-login";
-// import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-// import TwitterLogin from "react-twitter-auth/lib/react-twitter-auth-component.js";
-// const responseFacebook = response => {
-//   console.log(response);
-// };
+import React, { Component } from 'react';
 
-// const responseGoogle = response => {
-//   let googleData;
-//   googleData = {
-//     googleID: response.profileObj.googleId,
-//     email: response.profileObj.email,
-//     password: "",
-//     username: response.profileObj.name,
-//     firstname: response.profileObj.givenName,
-//     lastname: response.profileObj.familyName,
-//     avatar: response.profileObj.imageUrl,
-//     accesstoken: response.accessToken
-//   };
-//   this.props.socialRegisterUser(googleData);
-// };
 
-class LogIn extends React.Component {
-  // constructor() {
-  //   super();
 
-  //   this.onFailed = this.onFailed.bind(this);
-  //   this.onSuccess = this.onSuccess.bind(this);
-  // }
+export default class Login extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: '',
+      password: '',
+    };
+  }
+  handleInputChange = (event) => {
+    const { value, name } = event.target;
+    this.setState({
+      [name]: value
+    });
 
-  // onSuccess(response) {
-  //   response.json().then(body => {
-  //     alert(JSON.stringify(body));
-  //   });
-  // }
+  }
 
-  // onFailed(error) {
-  //   alert(error);
-  // }
+  onLogout = () => {
+    // this.setState({
+    //   email: "",
+    //   password: "",
+    // });
+    console.log();
+
+  }
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    fetch('/api/user/authenticate', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => {
+        if (res.status === 200) {
+          this.props.history.push('/');
+
+        } else {
+          const error = new Error(res.error);
+          throw error;
+        }
+
+      })
+      .catch(err => {
+        console.error(err);
+        alert('Error logging in please try again');
+      });
+  }
+
 
   render() {
-    // const customHeader = {};
-    // customHeader["Test"] = "test-header";
     return (
-      <div className="LogIn">
-        <div>
-          <h3>Create your new account</h3>
-          <form>
-            <div className="form-group">
-              <label>Add Person Name: </label>
-              <input type="text" className="form-control" />
-            </div>
-            <div className="form-group">
-              <label>Add Business Name: </label>
-              <input type="text" className="form-control" />
-            </div>
-            <div className="form-group">
-              <label>Add GST Number: </label>
-              <input type="text" className="form-control" />
-            </div>
-            <div className="form-group">
-              <input
-                type="submit"
-                value="Crate Account"
-                className="btn btn-primary"
-              />
-            </div>
-          </form>
-        </div>
-        <div>
-          {/* <TwitterLogin
-            loginUrl="http://localhost:4000/api/v1/auth/twitter"
-            onFailure={this.onFailed}
-            onSuccess={this.onSuccess}
-            requestTokenUrl="http://localhost:4000/api/v1/auth/twitter/reverse"
-            showIcon={true}
-            customHeaders={customHeader}
-            forceLogin={true}
+      <div>
+        <form onSubmit={this.onSubmit}>
+          <h1>Login Below!</h1>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            value={this.state.email}
+            onChange={this.handleInputChange}
+            required
           />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            required
+          />
+          <input type="submit" value="Login" />
+        </form>
+        <button onClick={this.onLogout}>
+          Logout
+      </button>
 
-          <TwitterLogin
-            loginUrl="http://localhost:4000/api/v1/auth/twitter"
-            onFailure={this.onFailed}
-            onSuccess={this.onSuccess}
-            requestTokenUrl="http://localhost:4000/api/v1/auth/twitter/reverse"
-            showIcon={true}
-            customHeaders={customHeader}
-          >
-            <b>Custom</b> Twitter <i>Login</i> content
-          </TwitterLogin>
-        </div>
-        <div>
-          <FacebookLogin
-            appId="1088597931155576"
-            autoLoad
-            callback={responseFacebook}
-            render={renderProps => (
-              <button onClick={renderProps.onClick}>
-                This is my custom FB button
-              </button>
-            )}
-          />
-        </div>
-        <div>
-          <GoogleLogin
-            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-            buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={"single_host_origin"}
-          /> */}
-        </div>
-      </div>
-    );
+      </div>);
   }
 }
-
-export default LogIn;

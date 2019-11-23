@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const router = Router();
+const withAuth = require("../middleware/middleware")
 
 const {
   getCities,
@@ -9,9 +10,10 @@ const {
   deleteCity
 } = require("../controllers/CityCtrls");
 
+
 router
   .route("/")
-  .get(getCities)
+  .get(withAuth, getCities)
   .post(postCities);
 router
   .route("/:id")

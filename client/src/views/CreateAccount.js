@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createUser } from "../redux/actions/userActions";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 //Material-UI
 import Container from "@material-ui/core/Container";
@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+
 
 const useStyles = makeStyles(theme => ({
   close: {
@@ -65,7 +66,7 @@ const CreateAccount = ({ createUser, history }) => {
           <div className="form-group">
             <label> Password: </label>
             <input
-              type="text"
+              type="password"
               className="form-control"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -75,7 +76,7 @@ const CreateAccount = ({ createUser, history }) => {
           <div className="form-group">
             <label>Email: </label>
             <input
-              type="text"
+              type="email"
               className="form-control"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

@@ -1,41 +1,67 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { fetchActivities } from "../redux/actions/activitiesActions";
 import PropTypes from "prop-types";
 
-class Activity extends React.Component {
-  state = {};
+//Material-ui
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
 
-  componentDidMount = () => {
-    this.props.fetchActivities(this.props.content);
-    console.log(this.props.content);
-  };
 
-  render() {
-    const activities = this.props.activities.payload;
+const useStyles = makeStyles({
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
 
-    return (
-      <div>
-        {activities.map(activity => {
-          return (
-            <div key={activity._id}>
-              <img src={activity.image} alt="Cal Boter" />
-              <div> {activity.title} </div>
-            </div>
-          );
-        })}
-      </div>
-    );
-  }
+
+const Activity = ({ content, activities, fetchActivities }) => {
+  const classes = useStyles();
+
+  useEffect(() => {
+    fetchActivities(content);
+  }, []);
+
+
+  return (
+    <div>
+      {activities.map(activity => {
+        return (
+          <Card className={classes.card} key={activity._id} >
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={activity.image}
+                title={activity.title}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {activity.title}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        );
+      })}
+    </div>
+  );
 }
+
 
 Activity.propTypes = {
   fetchActivities: PropTypes.func.isRequired,
-  activities: PropTypes.object.isRequired
+  activities: PropTypes.array.isRequired
 };
 
 const mapStateProps = state => ({
-  activities: state.activities
+  activities: state.activities.payload
 });
 
 export default connect(mapStateProps, { fetchActivities })(Activity);

@@ -9,9 +9,11 @@ export function fetchingItineraries() {
 }
 
 export function fetchingItinerariesSuccess(itineraries) {
+
   return {
     type: ADD_IT_SUCCESS,
     itineraries
+
   };
 }
 
@@ -29,6 +31,7 @@ export function fetchItineraries(cityId) {
       .get("/api/itineraries/" + cityId)
       .then(res => {
         dispatch(fetchingItinerariesSuccess(res.data));
+
       })
       .catch(err => {
         console.log(err);

@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchCities } from "../redux/actions/citiesAction";
 import PropTypes from "prop-types";
+
+import { fetchCities } from "../redux/actions/citiesAction";
 import CitySearch from "../components/CitySearch";
 import Loader from "../components/Loader";
 
@@ -23,7 +24,7 @@ const Cities = ({ fetchCities, cities }) => {
 
 Cities.propTypes = {
   fetchCities: PropTypes.func.isRequired,
-  cities: PropTypes.object.isRequired
+  cities: PropTypes.array.isRequired
 };
 
 const mapStateToProps = state => ({

@@ -29,6 +29,7 @@ export function fetchActivities(itineraryId) {
       .get("/api/activities/" + itineraryId)
       .then(res => {
         dispatch(fetchingActivitiesSuccess(res.data));
+
       })
       .catch(err => {
         console.log(err);

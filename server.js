@@ -3,11 +3,16 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+const cookieParser = require('cookie-parser');
+const withAuth = require("./middleware/middleware")
+const userModel = require("./models/UserModel")
+
 // const path = require("path");
 console.log("in");
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // DB Config
 const db = require("./config/keys").mongoURI;
@@ -33,6 +38,10 @@ main();
 // middleweares
 app.use(cors());
 app.use(express.json());
+app.get('/checkToken', withAuth, function (req, res) {
+  console.log(req.email);
+  userModel.findOne({ email: req.email }).select("-password").then(user => res.send(user))
+});
 
 // routes
 app.use("/api/cities", require("./routes/CitiesRoutes"));
