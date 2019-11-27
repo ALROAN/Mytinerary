@@ -1,3 +1,5 @@
+
+/* GENERAL */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -12,57 +14,7 @@ code {
     monospace;
 }
 
-.appContainer {
-  height: 100vh;
-  width: 100vw;
-  text-align: center;
-  /* background-image: linear-gradient(-90deg, cornflowerblue, indigo); */
-}
-
-.views {
-  height: 90vh;
-  width: 100vw;
-  overflow: scroll;
-}
-.myLogo {
-  height: 20vh;
-  width: 80vw;
-}
-
-.circledRight {
-  width: 30vw;
-  height: 30hw;
-}
-
-.homeIcon {
-  width: 30vw;
-  height: 30hw;
-}
-
-.navbar {
-  flex-wrap: nowrap !important;
-  padding-top: 1vh;
-}
-
-.buttons {
-  padding: 0 !important;
-  
-}
-
-.footer {
-  background-color: #333;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-}
-
-.searchBarCitiesDiv {
-  margin-bottom: 20px !important;
-
-}
-
-
+/* BACK BUTTON */
 .backButton {
 	background:linear-gradient(to bottom, #bcd1cb 5%, #969e9e 100%);
 	background-color:#bcd1cb;
@@ -88,4 +40,109 @@ code {
 	position:relative;
 	top:1px;
 }
+
+
+/* APP */
+
+.appContainer {
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+}
+
+.views {
+  height: 90vh;
+  width: 100vw;
+  overflow: scroll;
+}
+
+/* HOME */
+
+.myLogo {
+  max-width: 300px;
+  max-height: 100px;
+}
+
+.LinkHomeImage {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  
+}
+
+.divHomeImage {
+  width: 95vw;
+  height: 30vw;
+  background-image: url("./assets/maps_image_home.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  align-items: center;
+justify-content: center;
+}
+
+.textHomeImage {
+  color: #FFFFFF;
+  font-size: 30px;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0px 0px 11px rgba(206,206,206,0);
+}
+
+.divButtonsHomeLink {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.buttonsHomeLink {
+	box-shadow:inset 0px 0px 0px 0px #91b8b3;
+	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+	background-color:#768d87;
+	border-radius:10px;
+	border:2px solid #566963;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Times New Roman;
+	font-size:16px;
+	font-weight:bold;
+	padding:11px 38px;
+	text-decoration:none;
+  text-shadow:0px 0px 0px #2b665e;
+  margin-top: 10px;
+}
+.buttonsHomeLink:hover {
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	background-color:#6c7c7c;
+}
+.buttonsHomeLink:active {
+	position:relative;
+	top:1px;
+}
+/* FOOTER */
+
+.navbar {
+  flex-wrap: nowrap !important;
+  padding-top: 1vh;
+}
+
+.buttonsNav {
+  padding: 0 !important;
+}
+
+.footer {
+  background-color: #333;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+
+/* CITIES */
+.searchBarCitiesDiv {
+  margin-bottom: 20px !important;
+}
+
+
+
 

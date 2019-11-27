@@ -1,36 +1,35 @@
 // CITIES //
 
 export const GET_CITIES = "GET_CITIES";
-// export const CITIES_LOADING = "CITIES_LOADING";
-// export const ADD_CITY = "ADD_CITY";
 export const ADD_SUCCESS = "ADD_SUCCESS";
-// export const DELETE_CITY = "DELETE_CITY";
-// export const UPDATE_CITY = "UPDATE_CITY";
 
 // ITINERARIES //
 
 export const GET_ITINERARIES = "GET_ITINERARIES";
-// export const GET_ALL_ITINERARIES = "GET_ITINERARIES";
-// export const ITINERARIES_LOADING = "ITINERARIES_LOADING";
-// export const ADD_ITINERARY = "ADD_ITINERARY";
 export const ADD_IT_SUCCESS = "ADD_IT_SUCCESS";
-// export const DELETE_ITINERARY = "DELETE_ITINERARY";
-// export const UPDATE_ITINERARY = "UPDATE_ITINERARY";
-// export const SET_ITINERARY_RATING = "SET_ITINERARY_RATING";
-// export const SET_ITINERARY_LIKES = "SET_ITINERARY_LIKES";
 
 // ACTIVITIES //
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
-// export const ACTIVITIES_LOADING = "ACTIVITIES_LOADING";
-// export const ADD_ACTIVITY = "ADD_ACTIVITY";
 export const ADD_AC_SUCCESS = "ADD_AC_SUCCESS";
-/* export const DELETE_ACTIVITY = "DELETE_ACTIVITY"
-export const UPDATE_ACTIVITY = "UPDATE_ACTIVITY" */
 
 // USERS //
 
 export const ADD_USER = "ADD_USER";
 export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS";
+
+// LOGIN //
+export const IS_LOGIN = "IS_LOGIN"
+export const IS_LOGIN_SUCCES = "IS_LOGIN_SUCCES"
+
+//LOGOUT //
+export const IS_LOGOUT = "IS_LOGOUT"
+
+
+// WITHAUTH //
+
+export const WITH_AUTH = "WITH_AUTH"
+export const WITH_AUTH_SUCCES = "WITH_AUTH_SUCCES"
+export const WITH_AUTH_INFO = "WITH_AUTH_INFO"
 
 
 

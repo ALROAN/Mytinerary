@@ -39,7 +39,6 @@ main();
 app.use(cors());
 app.use(express.json());
 app.get('/checkToken', withAuth, function (req, res) {
-  console.log(req.email);
   userModel.findOne({ email: req.email }).select("-password").then(user => res.send(user))
 });
 

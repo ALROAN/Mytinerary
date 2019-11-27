@@ -24,21 +24,21 @@ export default function Footer() {
       className="navbar">
 
       <BottomNavigationAction
-        className="buttons"
+        className="buttonsNav"
         icon={<RestoreIcon />}
         component={Link}
         to="/" />
 
 
       <BottomNavigationAction
-        className="buttons"
+        className="buttonsNav"
         icon={<FavoriteIcon />}
         component={Link}
         to="/cities" />
 
 
       <BottomNavigationAction
-        className="buttons"
+        className="buttonsNav"
         icon={<LocationOnIcon />}
         component={Link}
         to="/createAccount">
@@ -47,7 +47,7 @@ export default function Footer() {
 
 
       <BottomNavigationAction
-        className="buttons"
+        className="buttonsNav"
         icon={<FolderIcon />}
         component={Link}
         to="/logIn">

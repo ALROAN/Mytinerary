@@ -1,4 +1,4 @@
-import React, { useState, useRef} from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
 
 //Material-ui
@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   cityButton: {
   marginBottom: "10px !important",
   width: "95vw",
-  height: "30vh",
+  height: "20vh",
 	border:"3px solid #942911",
 	display:"inline-block",
 	cursor:"pointer",
@@ -20,37 +20,34 @@ const useStyles = makeStyles({
 	fontSize:"18px",
 	padding:"32px 76px",
 	textDecoration:"none",
-	textShadow:"0px 0px 60px brown",
+  textShadow:"0px 0px 60px brown",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center"
   }
 });
 
 
 const CitySearch = ({content}) => {
   const classes = useStyles();
-  const buttonEl = useRef(null)
-
-
 
   const[allCities,setAllCities] = useState(content)
   const[citiesFound,setCitiesFound] = useState(content)
-    
+
   const filterList = (e) => {
-      let citiesFound = setAllCities(citiesFound);
-    citiesFound = citiesFound.filter(city => {
-      
-      return (
-        city.city.toLowerCase().startsWith(e.target.value.toLowerCase()) ||
-        e.target.value === ""
-      );
-    });
-    setCitiesFound(citiesFound)
-  };
+  let filteredCities = allCities.filter(city => {
+    
+    return (
+      city.city.toLowerCase().startsWith(e.target.value.toLowerCase()) ||
+      e.target.value === ""
+    );
+  });
+  setCitiesFound(filteredCities)
+};
+
     return (
       <div>
         <div className="searchBarCitiesDiv">
           <TextField
-            className="searchBarCities"
-            id="standard-search"
             label="Search your City"
             type="search"
             margin="normal"
@@ -61,19 +58,14 @@ const CitySearch = ({content}) => {
             return (
               
               <Button
-              style = { {"backgroundImage": "url("+city.image+")"}}
+              style = { {"backgroundImage": "url("+ city.image +")"}}
                       key={city._id}
-                      ref={buttonEl}
                       className={classes.cityButton}
                       color="primary"
                       component={Link}
                       to={`/itinerary/${city._id}`}>
                         {city.city} // {city.country}
                     </Button>
-
-
-              
-                       
             );})}
         </div>
       </div>
