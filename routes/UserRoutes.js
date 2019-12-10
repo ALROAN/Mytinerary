@@ -6,11 +6,13 @@ const {
   postUser,
   authenticateUser,
   putUser,
-  deleteUser
+  deleteUser,
+  logOut
 } = require("../controllers/UserCtrls");
 const jwt = require('jsonwebtoken');
 
 router.route("/").post(postUser);
 router.route("/authenticate").post(authenticateUser)
+router.route("/logout").delete(logOut)
 
 module.exports = router;

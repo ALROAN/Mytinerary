@@ -45,18 +45,39 @@ code {
 /* APP */
 
 .appContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   height: 100vh;
   width: 100vw;
   text-align: center;
 }
 
 .views {
-  height: 90vh;
-  width: 100vw;
+  height: 75vh;
+  width: 100%;
   overflow: scroll;
 }
 
+/* HEADER */
+
+.headerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  width: 100%;
+  height: 10vh;
+  background-color: beige;
+  margin-bottom: 10px;
+}
+
 /* HOME */
+
+.HomeDiv {
+  width: 100%;
+}
 
 .myLogo {
   max-width: 300px;
@@ -64,6 +85,7 @@ code {
 }
 
 .LinkHomeImage {
+  height: 100%;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -71,9 +93,15 @@ code {
   
 }
 
+.divButtonsHome {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
 .divHomeImage {
-  width: 95vw;
-  height: 30vw;
+  width: 100%;
+  height: 150px;
   background-image: url("./assets/maps_image_home.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -122,8 +150,10 @@ justify-content: center;
 /* FOOTER */
 
 .navbar {
+  display:  flex;
+  align-items: flex-start;
   flex-wrap: nowrap !important;
-  padding-top: 1vh;
+  /* padding-top: 1vh; */
 }
 
 .buttonsNav {
@@ -143,6 +173,98 @@ justify-content: center;
   margin-bottom: 20px !important;
 }
 
+.citiesDiv {
+  width: 100%;
+}
+
+/* CREATE ACCOUNT & LOGIN */
+
+.title {
+  padding-top: 0;
+}
+
+.divFormCreateAcc {
+  width: 100%;
+  height: 100%;
+  background-color:#6c7c7c;
+  overflow: hidden;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+}
+
+.form-group {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2vh;
+}
+
+.formCreateAcc {
+  height: 80%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 3%;
+  border: 9px solid rgba(28,110,164,0.93);
+  border-radius: 9px;
+  background-color: cadetblue;
+}
+
+/* LOGIN */
+
+.loginCont {
+  height: 50%;
+  width: 50%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+}
+
+.loginSuccesDiv {
+  border: #333 solid;  
+  height: 30%;
+  width: 30%; 
+  background: #2b665e;
+}
+
+.loginSuccesCont {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #bcd1cb;
+
+}
+
+.loginDiv {
+  width: 100%;
+  height: 100%;
+  background-color:#6c7c7c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 
+}
 
+.formLogin {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 3%;
+  border: 9px solid rgba(28,110,164,0.93);
+  border-radius: 9px;
+  background-color: cadetblue;
+}

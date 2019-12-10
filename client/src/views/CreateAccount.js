@@ -12,9 +12,7 @@ import CloseIcon from '@material-ui/icons/Close';
 
 
 const useStyles = makeStyles(theme => ({
-  close: {
-    padding: theme.spacing(0.5),
-  },
+
 }));
 
 const CreateAccount = ({ createUser, history }) => {
@@ -31,9 +29,9 @@ const CreateAccount = ({ createUser, history }) => {
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
+      history.push("/")
       return;
     }
-    history.push("/")
     setOpen(false);
   };
 
@@ -43,16 +41,17 @@ const CreateAccount = ({ createUser, history }) => {
       userName, password, email, firstName, lastName, avatar, country
     })
     setOpen(true);
+    // console.log(e.value);
 
 
   }
 
 
   return (
-    <Container className="LogIn">
-      <div>
-        <h3>Create your new account</h3>
-        <form onSubmit={handleSubmit}>
+    <Container className="divFormCreateAcc">
+      <div className="formCreateAcc">
+        <form onSubmit={handleSubmit} >
+          <h3 className="title">Create your new account</h3>
           <div className="form-group">
             <label>User Name: </label>
             <input
@@ -136,12 +135,11 @@ const CreateAccount = ({ createUser, history }) => {
           horizontal: 'left',
         }}
         open={open}
-        autoHideDuration={6000}
         onClose={handleClose}
         ContentProps={{
           'aria-describedby': 'message-id',
         }}
-        message={<span id="message-id">El usuario se ha creado correctamente. Bienvenido {userName}!!</span>}
+        message={<span id="message-id">El usuario se ha creado correctamente. Bienvenid@ {userName}!!</span>}
         action={[
           <IconButton
             key="close"

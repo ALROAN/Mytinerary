@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 
 import Footer from "./components/Footer";
 import Activities from "./components/Activity";
+import Header from "./components/Header";
+
 
 import { withAuth } from "./redux/actions/userActions"
 
@@ -17,14 +19,14 @@ import CreateAccount from "./views/CreateAccount";
 function App({ withAuth, user }) {
 
   useEffect(() => {
-    console.log(user);
-
-    withAuth();
+    // withAuth();
   }, []);
 
   return (
     <Router>
       <div className="appContainer">
+        <Header />
+
         <div className="views">
           <Route exact path="/" component={Home} />
           <Route path="/cities" component={Cities} />

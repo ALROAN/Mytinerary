@@ -9,7 +9,6 @@ import CitySearch from "../components/CitySearch";
 import Loader from "../components/Loader";
 
 const Cities = ({ fetchCities, cities, user }) => {
-  console.log(user);
 
   useEffect(() => {
     fetchCities();
@@ -17,8 +16,8 @@ const Cities = ({ fetchCities, cities, user }) => {
 
   return (
 
-    (user) ? (cities.length !== 0 ?
-      (<div className="cities">
+    (user._id) ? (cities.length !== 0 ?
+      (<div className="citiesDiv">
         <CitySearch content={cities} />
       </div>) : <Loader />) : (<Redirect to="/logIn" />)
 

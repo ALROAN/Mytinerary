@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
+import { logout } from "../redux/actions/userActions"
 
 //Material-ui
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import RestoreIcon from "@material-ui/icons/Restore";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-import FolderIcon from "@material-ui/icons/Folder";
+import HomeIcon from '@material-ui/icons/Home';
+import SearchIcon from '@material-ui/icons/Search';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 
-export default function Footer() {
+function Footer({ user, logout }) {
   const [value, setValue] = React.useState(0);
 
+  useEffect(() => {
+    if (user) {
+    }
+
+  });
+
+  const isLogout = () => {
+    console.log("footer logout");
+    logout();
+  }
 
 
   return (
@@ -25,36 +39,52 @@ export default function Footer() {
 
       <BottomNavigationAction
         className="buttonsNav"
-        icon={<RestoreIcon />}
+        icon={<HomeIcon />}
         component={Link}
         to="/" />
 
-
       <BottomNavigationAction
         className="buttonsNav"
-        icon={<FavoriteIcon />}
+        icon={<SearchIcon />}
         component={Link}
         to="/cities" />
+      <div className="divButtonsFooter">
+        {
+          (user._id) ?
+            (<BottomNavigationAction
+              className="buttonsNav"
+              onClick={isLogout}
+              icon={<ExitToAppIcon />}
+              component={Link}
+              to="/">
+            </BottomNavigationAction>) :
+            (<BottomNavigationAction
+              className="buttonsNav"
+              icon={<AccountBoxIcon />}
+              component={Link}
+              to="/logIn" />)
+        }
+
+      </div>
 
 
-      <BottomNavigationAction
-        className="buttonsNav"
-        icon={<LocationOnIcon />}
-        component={Link}
-        to="/createAccount">
-      </BottomNavigationAction>
 
 
-
-      <BottomNavigationAction
-        className="buttonsNav"
-        icon={<FolderIcon />}
-        component={Link}
-        to="/logIn">
-      </BottomNavigationAction>
 
 
     </BottomNavigation>
   );
 }
+
+Footer.propTypes = {
+  logout: PropTypes.func.isRequired,
+
+};
+
+
+const mapStateToProps = state => ({
+  user: state.user.payload
+});
+
+export default connect(mapStateToProps, { logout })(Footer);
 

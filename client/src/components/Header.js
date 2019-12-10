@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 
-class Header extends React.Component {
-  render() {
-    return (
-      <div></div>
-    );
-  }
+
+const Header = ({ user }) => {
+
+  useEffect(() => {
+    if (user) {
+    }
+
+  });
+
+
+  return (
+
+    <div className="headerContainer"><p>{user.userName}</p></div>
+  );
+
 }
 
-export default Header;
+
+
+const mapStateToProps = state => ({
+  user: state.user.payload
+});
+
+export default connect(mapStateToProps)(Header);

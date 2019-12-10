@@ -113,7 +113,8 @@ const UserCtrl = {
       req.params.password
     );
     res.send(deleteUser);
-  }
+  },
+  logOut: (req, res) => res.clearCookie('token').sendStatus(200)
 };
 
 module.exports = UserCtrl;

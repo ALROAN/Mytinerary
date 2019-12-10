@@ -20,6 +20,8 @@ export const ADD_USER_SUCCESS = "ADD_USER_SUCCESS";
 // LOGIN //
 export const IS_LOGIN = "IS_LOGIN"
 export const IS_LOGIN_SUCCES = "IS_LOGIN_SUCCES"
+export const VIEW_LOGIN = "VIEW_LOGIN"
+
 
 //LOGOUT //
 export const IS_LOGOUT = "IS_LOGOUT"

@@ -22,7 +22,8 @@ const useStyles = makeStyles({
 	textDecoration:"none",
   textShadow:"0px 0px 60px brown",
   backgroundRepeat: "no-repeat",
-  backgroundPosition: "center"
+  backgroundPosition: "center",
+  backgroundSize: "auto 900px"
   }
 });
 
@@ -56,16 +57,15 @@ const CitySearch = ({content}) => {
         <div  >
           {citiesFound.map(function (city) {
             return (
-              
               <Button
-              style = { {"backgroundImage": "url("+ city.image +")"}}
-                      key={city._id}
-                      className={classes.cityButton}
-                      color="primary"
-                      component={Link}
-                      to={`/itinerary/${city._id}`}>
-                        {city.city} // {city.country}
-                    </Button>
+                  style = { {"backgroundImage": "url("+ city.image +")"}}
+                  key={city._id}
+                  className={classes.cityButton}
+                  color="primary"
+                  component={Link}
+                  to={`/itinerary/${city._id}`}>
+                    {city.city} // {city.country}
+              </Button>
             );})}
         </div>
       </div>

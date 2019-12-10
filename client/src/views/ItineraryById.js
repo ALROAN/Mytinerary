@@ -96,12 +96,10 @@ const Itineraries = ({ fetchItineraries, itineraries, match }) => {
                     </IconButton>
                   }
                   title={itinerary.title}
-                  subheader="September 14, 2016"
                 />
                 <CardMedia
                   className={classes.media}
                   image={itinerary.profilePic}
-                  title="Contemplative Reptile"
                 />
                 <CardContent>{itinerary.hashtag.map((tag, index) => {
                   return (<a key={index} href="###">{tag}   </a>)

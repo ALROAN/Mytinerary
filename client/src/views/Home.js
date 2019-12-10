@@ -1,32 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 
+import LogIn from "./LogIn"
 import { logout } from "../redux/actions/userActions"
-import Header from "../components/Header";
-
-const Home = ({ user, logout }) => {
-
-  // useEffect(() => {
-  //   console.log("logout");
-
-  //   logout();
-
-  // }, []);
+import { withAuth } from "../redux/actions/userActions"
 
 
-  const isLogout = () => {
-    console.log("logout");
+const Home = ({ user, logout, withAuth, history }) => {
+  const [userInfo, setUserInfo] = useState(user)
 
-    logout();
-  }
+  useEffect(() => {
+    // setUserInfo(user)
+    console.log("user.payload._id = " + user.payload._id);
+    withAuth()
+  }, [])
 
-  console.log(user);
+
   return (
-    <div className="Home">
-      <Header />
+    <div className="HomeDiv">
       <div>
         <img
           className="myLogo"
@@ -37,7 +31,9 @@ const Home = ({ user, logout }) => {
           Find your perfect trip, designed by insiders who know and love their
           cities.
         </p>
+
       </div>
+
       <div>
         <h1>Start browsing</h1>
         <Link to="/cities" className="LinkHomeImage">
@@ -47,11 +43,14 @@ const Home = ({ user, logout }) => {
         </Link>
         <div className="divButtonsHomeLink">
           {
-            (user._id) ?
-              (<button className="buttonsHomeLink" onClick={isLogout}>Logout</button>) :
-              (<Link to="/logIn"><button className="buttonsHomeLink">Login</button></Link>)
+            (user.payload._id) ?
+              (<button className="buttonsHomeLink" onClick={() => logout()}>Logout</button>) :
+              (<div className="divButtonsHome">
+                <Link to="/logIn"><button className="buttonsHomeLink">Login</button></Link>
+                <Link to="/createAccount"><button className="buttonsHomeLink">Create Account</button></Link>
+              </div>)
           }
-          <Link to="/createAccount"><button className="buttonsHomeLink">Create Account</button></Link>
+
         </div>
       </div>
 
@@ -61,11 +60,12 @@ const Home = ({ user, logout }) => {
 
 Home.propTypes = {
   logout: PropTypes.func.isRequired,
+  withAuth: PropTypes.func.isRequired,
 };
 
 
 const mapStateToProps = state => ({
-  user: state.user.payload,
+  user: state.user,
 });
 
-export default connect(mapStateToProps, { logout })(Home);
+export default connect(mapStateToProps, { logout, withAuth })(Home);
