@@ -32,8 +32,9 @@ class Login extends Component {
 
 
   onSubmit = (event) => {
+
     event.preventDefault();
-    logIn(this.state);
+    this.props.logIn(this.state);
     this.setState({
       loginSucces: true
     });
@@ -46,7 +47,7 @@ class Login extends Component {
     return (
       <div className="loginDiv">
         <div className="loginCont">
-          <form onSubmit={this.onSubmit} className="formLogin">
+          <form onSubmit={this.onSubmit} className="form">
             <h3 className="title">Login!</h3>
             <input
               className="form-group"

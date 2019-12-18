@@ -12,7 +12,12 @@ import CloseIcon from '@material-ui/icons/Close';
 
 
 const useStyles = makeStyles(theme => ({
+  snackbar: {
+    position: "fixed",
+    top: 0,
+    right: 0
 
+  }
 }));
 
 const CreateAccount = ({ createUser, history }) => {
@@ -27,13 +32,6 @@ const CreateAccount = ({ createUser, history }) => {
   const [avatar, setAvatar] = useState("")
   const [country, setCountry] = useState("")
 
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      history.push("/")
-      return;
-    }
-    setOpen(false);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -41,9 +39,6 @@ const CreateAccount = ({ createUser, history }) => {
       userName, password, email, firstName, lastName, avatar, country
     })
     setOpen(true);
-    // console.log(e.value);
-
-
   }
 
 
@@ -130,12 +125,13 @@ const CreateAccount = ({ createUser, history }) => {
         </form>
       </div>
       <Snackbar
+        className={classes.snackbar}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}
         open={open}
-        onClose={handleClose}
+        onClose={() => history.push("/")}
         ContentProps={{
           'aria-describedby': 'message-id',
         }}
@@ -146,9 +142,8 @@ const CreateAccount = ({ createUser, history }) => {
             aria-label="close"
             color="inherit"
             className={classes.close}
-            onClick={handleClose}
+            onClick={() => history.push("/")}
           >
-            <CloseIcon />
           </IconButton>,
         ]}
       />

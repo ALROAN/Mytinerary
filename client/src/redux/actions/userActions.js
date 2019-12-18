@@ -58,16 +58,16 @@ export function viewLogin(isLogin) {
 
 
 export function createUser(body) {
+
     return dispatch => {
         dispatch(postUser());
         axios
             .post("/api/user", body)
             .then(res => {
                 dispatch(postUserSuccess(res.data));
-                // dispatch(logIn());
                 console.log(res.data);
-
             })
+
             .catch(err => {
                 console.log(err);
                 dispatch(postUserFailure(err.response.statusText));
@@ -78,28 +78,33 @@ export function createUser(body) {
 
 
 export function logIn(state) {
-    fetch('/api/user/authenticate', {
-        method: 'POST',
-        body: JSON.stringify(state),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(res => {
-            if (res.status === 200) {
-                console.log("login");
-
-            } else {
-                const error = new Error(res.error);
-                throw error;
+    return dispatch => {
+        fetch('/api/user/authenticate', {
+            method: 'POST',
+            body: JSON.stringify(state),
+            headers: {
+                'Content-Type': 'application/json'
             }
         })
-        .catch(err => {
-            console.error(err);
+            .then(res => {
+                if (res.status === 200) {
+                    console.log("login");
 
-            alert('Error logging in, please try again');
-        });
+                } else {
+                    dispatch(viewLogin(false))
+                    const error = new Error(res.error);
+                    throw error;
 
+                }
+            })
+            .then(dispatch(viewLogin(true))
+            )
+            .catch(err => {
+                console.error(err);
+
+                alert('Error logging in, please try again');
+            });
+    }
 }
 
 export function logout() {
